@@ -92,7 +92,7 @@ export default function BuilderPage() {
 }
 
 // System prompts per step
-function getSystemPrompt(step: string, form: { [key: string]: string }) {
+function getSystemPrompt(step: string, _form: { [key: string]: string }) {
   switch (step) {
     case 'Idea Helper':
       return `You are an idea generation expert. Use the following info to help the user generate and refine a business idea. Be creative, but practical.`;

@@ -5,12 +5,17 @@ const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
 });
 
+type ChatMessage = {
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+};
+
 export async function POST(req: NextRequest) {
     const { messages } = await req.json();
 
     // 🔁 MOCK MODE
     if (process.env.NODE_ENV === 'development' || process.env.MOCK_MODE === 'true') {
-        const lastUserMessage = messages.findLast((msg: any) => msg.role === 'user')?.content || '';
+        const lastUserMessage = messages.findLast((msg: ChatMessage) => msg.role === 'user')?.content || '';
 
         const mockReply = getMockReply(lastUserMessage);
 
