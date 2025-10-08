@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({
             reply: {
                 role: 'assistant',
-                content: mockReplyhello,
+                content: mockReply,
             },
         });
     }
